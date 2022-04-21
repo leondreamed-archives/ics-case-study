@@ -1,0 +1,99 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{ragged2e}
+\usepackage{graphicx}
+\usepackage{multirow}
+
+\newenvironment{boldenv}
+  {\bfseries}% \begin{boldenv}
+  {\medskip}% \end{boldenv}
+
+\begin{document}
+
+\textbf{1. Describe the role of convergence in genetic algorithms and the factors affecting convergence.}
+
+\medskip
+
+The role of convergence in genetic algorithms is to determine a point that maximizes the effectiveness of the algorithm. As the average fitness of certain populations grow, the algorithm
+
+\bigskip
+
+\textbf{2. Evaluate the use and implementation of roulette wheel selection, tournament selection and truncation selection strategies used within genetic algorithms (a table preferred)}
+
+\begin{table}[H]
+	\def\arraystretch{1.5}
+	\begin{tabularx}{\linewidth}{|
+			>{\RaggedRight}X|
+			>{\RaggedRight}X|
+			>{\RaggedRight}X|
+		}
+		\hline
+		\textbf{Roulette Wheel Selection}
+		 &
+		\textbf{Tournament Selection}
+		 &
+		\textbf{Truncation Selection}
+		\\\hline
+
+		\textbf{Implementation:} Each parent contains a fitness value, which denotes how close they are to the
+		optimal candidate (or solution). Then, parents are picked based on their
+		fitness based on a "roulette wheel" where the chance a parent gets picked is proportional to its fitness value, and the parents are chosen at random like a spin of a roulette wheel.
+
+		 &
+
+		\textbf{Implementation:} Tournament selection is one way of choosing individuals from a population to be carried on to
+		A ``tournament''
+		of k individuals from the population is created to pick the fittest one for crossover. These tournaments
+		are repeatedly run until the desired number of individuals have been selected.
+
+		 &
+
+		\textbf{Implementation:} The potential candidate solutions are ordered by fitness, and then the bottom percent of the solutions are discarded and the top percent is added to the mating pool.
+
+		\\\hline
+	\end{tabularx}
+\end{table}
+
+\begin{boldenv}
+	Discuss the different solutions to address the failure of simple crossover strategies for the travelling salesman problem.
+
+	In particular:
+
+	◦ why they are necessary
+
+	◦ how they are applied
+
+	◦ how they preserve the parental traits
+
+	◦ what other possible methods are available
+\end{boldenv}
+
+\medskip
+
+Simple crossover strategies for the travelling salesman problem aren't sufficient because they may produce invalid tours. Instead, alternative crossover strategies are listed below:
+
+\subsection*{Partially mapped crossover}
+
+Partially mapped crossover works by selecting a random sub-sequence from P1 and adding it to F1. Then, elementwise mappings are created between P1 and P2 for citics in P1 that are not already in F1, so that when the remaining cities from P1 are added to F1, F1 will be a valid tour as no cities will be repeated.
+
+Partially mapped crosover preserves the parental traits because the a sub-sequence of P1 is preserved, thereby preserving the fitness of P1.
+
+\subsection*{Order crossover}
+
+Order crossover works by choosing a sub-sequence from one parent and preserving the relative order of the remaining cities from the other parent. Then, the cities from P2 are copied to P1 in the order they appear. This method prevents duplicate cities from appearing in the final tour, and also preserves the parental triats by preserving a subsequence from P1 and the order of cities in P2.
+
+\subsection*{Cycle crossover}
+
+In cycle crossover, every city maintains the position it had in at least one of its parents. This preserves the parental traits of P1 and P2 as it preserves position of certain cities in P1 and P2. In addition, because the cycle stops when a city that is already in F1 is encountered, it ensures that a valid tour will always be produced.
+
+\bigskip
+
+\textbf{Illustrate advantages and disadvantages of genetic algorithms with respect to other approaches to the travelling salesman problem and combinatorial optimization problems in general.}
+
+\medskip
+
+An advantage of genetic algorithms compared to other approaches is the relatively low computational power needed to arrive at a decent solution. Compared to approaches like brute-force, genetic algorithms can produce an acceptance answer more quickly, especially with the travelling salesman problem. However, a disadvantage of genetic algorithms is that you cannot guarantee that they arrive at an optimal solution for a problem, which may not be an acceptance result for certain problems that need an optimal answer.
+
+\end{document}
